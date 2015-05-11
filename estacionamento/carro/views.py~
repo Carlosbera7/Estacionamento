@@ -1,0 +1,11 @@
+from django.shortcuts import render
+from django.template import RequestContext, loader
+from .models import Cliente,AlugaVagas,Vaga,Veiculo,EncerrarAluguel
+
+
+def index(request):
+    context = {'texto': 'index'}
+        
+    return render(request, 'index.html', context)
+
+
