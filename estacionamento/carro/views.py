@@ -14,8 +14,8 @@ def formCadastroCarro(request):
     if request.method == 'POST':
         form = formCarro(request.POST)
         if form.is_valid():
-            form.save()
-            return render(request, 'carro.html', {'form': form})
+            form.save()                       
+            return render(request, 'index.html', {'form': form})
     else:
         form = formCarro()
 
