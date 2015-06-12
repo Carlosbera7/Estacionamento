@@ -2,12 +2,16 @@
 <html>
     <head>
         <title>Estacionamento</title>
-        
+        {% load bootstrap3  %}
         <!-- define a viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" >
         
-        <!-- adicionar CSS Bootstrap -->
+        <!-- adicionar CSS Bootstrap --
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        -->
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     </head>
     <body>
         
@@ -40,12 +44,37 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+		<div id="listagem" class="list-group">
+			<h1 id="TituloTable"> Veículos Cadastrados </h1>
+			<br>
+			<br>
+			<form action="{% url 'ListaCarros' %}" method="post">
+				{% csrf_token %}
+				<input type="text" name="parametro" size="50">
+				<input class="btn btn-primary btn-lg" type="submit" value="Buscar">
+			</form><br><br>
+			<table class="table table-condensed">
+				<td><h3>Modelo</h3></td>
+				<td><h3>Cor</h3></td>
+				<td><h3>Marca</h3></td>
+				<td><h3>Placa</h3></td>
+				
+			</table>
+			{% for q in listaCarros %}
+			<a href="{% url 'carro_edita' q.pk %}">
+			<table class="table table-condensed">
+				<td>{{ q.modelo }} </td>
+				<td>{{ q.cor }} </td>
+				<td>{{ q.marca }} </td>
+				<td>{{ q.placa }}</td>				
+			</table>
+			</a>
+			{% endfor %}
+		</div>
        
-        <div class="jumbotron">
-  <h1>Estacionamento!</h1>
-  <p>Estacione com segurança e qualidadde</p>
-  <p><a class="btn btn-primary btn-lg" href="{% url 'aluga' %}" role="button">Estacione</a></p>
-</div>
+       
         
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
