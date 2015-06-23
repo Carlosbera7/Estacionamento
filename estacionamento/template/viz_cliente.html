@@ -31,9 +31,9 @@
         <li><a href="{% url 'carro' %}">Cadastrar Carro</a></li>
           <li><a href="{% url 'vaga' %}">Cadastrar Vaga</a></li>
           <li><a href="{% url 'aluga' %}">Alugar Vaga</a></li>
-          <li><a href="{% url 'carro' %}">Vizualizar Carros</a></li>
-          <li><a href="{% url 'carro' %}">Vizualizar Clientes</a></li>
-          <li><a href="{% url 'carro' %}">Vizualizar Vagas</a></li>
+          <li><a href="{% url 'ListaCarros' %}">Vizualizar Carros</a></li>
+          <li><a href="{% url 'ListaClientes' %}">Vizualizar Clientes</a></li>
+          <li><a href="{% url 'ListaVagas' %}">Vizualizar Vagas</a></li>
        
       </ul>
      
@@ -41,6 +41,39 @@
   </div><!-- /.container-fluid -->
 </nav>
        
+        <div id="listagem" class="list-group">
+      <h1 id="TituloTable"> Clientes Cadastrados </h1>
+      <br>
+      <br>
+      <form action="{% url 'ListaClientes' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="parametro" size="50">
+        <input class="btn btn-primary btn-lg" type="submit" value="Buscar">
+      </form><br><br>
+      <table class="table table-condensed">
+      <thead>
+        <tr>
+        <th><h3>Nome</h3></th>
+        <th><h3>Telefone</h3></th>
+        <th><h3>Endereco</h3></th>
+        
+        </tr>
+      </thead>
+
+      {% for q in ListaClientes %}
+      <tbody>
+        <tr class="info">
+        <a href="{% url 'cliente_edita' q.pk %}">
+        <td>{{ q.nome }} </td>
+        <td>{{ q.telefone }} </td>
+        <td>{{ q.endereco }} </td>
+             
+        </tr>
+      </tbody>        
+      </a>
+      {% endfor %}
+      </table>
+    </div>
        
         
         <script src="js/jquery-1.11.1.min.js"></script>

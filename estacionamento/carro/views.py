@@ -11,7 +11,12 @@ def formCadastroCarro(request):
 		form = formCarro(request.POST)
 		if form.is_valid():
 			form.save()
-		return render(request, 'index.html', {'form': form})
+			q = Carro.objects.all()
+			context = {
+			'listaCarros': q,
+			}	
+
+		return render(request, 'viz_carros.html', context)
 	else:
 		form = formCarro()
 	return render(request, 'carro.html', {'form': form})

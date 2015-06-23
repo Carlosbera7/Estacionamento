@@ -11,9 +11,13 @@ urlpatterns = patterns('',
     url(r'^carro/$','carro.views.formCadastroCarro',name='carro'),
     url(r'^carro_edita/(?P<id>[0-9]+)/$','carro.views.formCadastroCarro',name='carro_edita'),
     url(r'^cliente/$','cliente.views.formCadastroCliente',name='cliente'), 
+    url(r'^cliente_edita/(?P<id>[0-9]+)/$','cliente.views.formCadastroCliente',name='cliente_edita'),
     url(r'^vaga/$','vaga.views.formCadastroVaga',name='vaga'), 
+    url(r'^vaga_edita/(?P<id>[0-9]+)/$','vaga.views.formCadastroVaga',name='vaga_edita'),
     url(r'^aluga/$','vaga.views.formCadastroAlugar',name='aluga'), 
     url(r'^CarroAlugado/$','carro.views.ListaCarrosCadastrados',name='ListaCarros'), 
+    url(r'^ClienteCadastrado/$','cliente.views.ListaClientesCadastrados',name='ListaClientes'),
+    url(r'^VagaCadastrado/$','vaga.views.ListaVagasCadastradas',name='ListaVagas'),
            
                                
                        
